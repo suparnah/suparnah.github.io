@@ -13,23 +13,31 @@
 
     body {
       font-family: 'Lexend Deca', sans-serif;
-      background: #fcfbf9 url('media/image.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background: #fcfbf9;
       color: #111827;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
     }
 
-    /* ── Sections container ─────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('media/image.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      filter: blur(3px);
+      z-index: -1;
+    }
+
     .content-wrap {
       max-width: 880px;
       width: 100%;
       padding: 0 24px;
     }
 
-    /* ── Hero ───────────────────────────────── */
     .hero {
       text-align: center;
       display: flex;
@@ -70,7 +78,7 @@
     .subtitle {
       font-size: clamp(16px, 2vw, 20px);
       line-height: 1.6;
-      color: #4b5563;
+      color: #ffffff;
       max-width: 580px;
       margin-bottom: 36px;
     }
@@ -134,7 +142,6 @@
       text-transform: uppercase;
     }
 
-    /* ── About & shared section styles ──────── */
     section { width: 100%; display: flex; flex-direction: column; align-items: center; }
 
     .section-label {
@@ -158,7 +165,7 @@
 
     .section-body {
       text-align: center;
-      color: #4b5563;
+      color: #ffffff;
       font-weight: 400;
       line-height: 1.8;
       max-width: 580px;
@@ -170,7 +177,6 @@
 
     #research { background-color: #ffffff; }
 
-    /* ── Research grid ───────────────────────── */
     .research-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -223,7 +229,6 @@
       line-height: 1.7;
     }
 
-    /* ── Footer ──────────────────────────────── */
     footer {
       width: 100%;
       text-align: center;
@@ -241,7 +246,6 @@
 
     footer a:hover { color: #111827; }
 
-    /* ── Responsive ──────────────────────────── */
     @media (max-width: 640px) {
       .hero { padding: 60px 0 40px; }
       #about, #research { padding: 60px 0; }
@@ -250,7 +254,6 @@
 </head>
 <body>
 
-  <!-- ═══════ HERO ═══════ -->
   <section class="hero">
     <div class="hero-content">
       <div class="badge">Open Lab for Next-Gen Computing</div>
@@ -266,7 +269,6 @@
     <div class="scroll-indicator">Scroll &darr;</div>
   </section>
 
-  <!-- ═══════ ABOUT ═══════ -->
   <section id="about">
     <div class="content-wrap">
       <p class="section-label">About</p>
@@ -277,7 +279,6 @@
     </div>
   </section>
 
-  <!-- ═══════ RESEARCH ═══════ -->
   <section id="research">
     <div class="content-wrap">
       <p class="section-label">Focus</p>
@@ -309,13 +310,11 @@
     </div>
   </section>
 
-  <!-- ═══════ FOOTER ═══════ -->
   <footer>
     <p>&copy; 2026 Supernah Open Lab &middot; All rights reserved &middot; <a href="https://github.com/suparnah" target="_blank">GitHub</a></p>
   </footer>
 
   <script>
-    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
