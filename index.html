@@ -4,63 +4,328 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Supernah Open Lab</title>
-  <link rel="stylesheet" href="https://raw.githubusercontent.com/kutt27/pith/main/dist/pith.min.css">
-  <script src="https://raw.githubusercontent.com/kutt27/pith/main/dist/pith.min.js"></script>
-<style>
-  body { max-width: 800px; margin: 0 auto; padding: 1rem; }
-  @media (max-width: 600px) { body { padding: 0.5rem; } }
-  nav { text-align: center; padding: 1rem 0; }
-  nav ul { list-style: none; padding: 0; }
-  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
-  #hero, #about, #research { text-align: center; }
-  .github-link { display: block; text-align: center; margin: 1rem 0; }
-</style>
-<header>
-    <nav style="text-align: center;">
-      <h1>supernah</h1>
-      <a href="https://github.com" class="github-link">GitHub</a>
-    </nav>
-  </header>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <main>
-    <section id="hero">
-      <h3>Open Lab for Next-Gen Computing</h3>
-      <p>Exploring the frontiers of Artificial Intelligence, Machine Learning, AI Safety, Neuroscience,and Quantum Computing.</p>
-    </section>
-	<br>
-    <section id="about">
-      <h3>About Supernah</h3>
-      <p>Supernah is my fresh personal project where I'm starting from zero - no team, no big backing, just me tackling niche problems that feel deeply personal and limited in scope.</p>
-    </section>
-	<br>
-    <section id="research">
-      <h3>Research Areas</h3>
-      <div class="grid">
-        <div>
-          <p><strong>Artificial Intelligence & ML</strong></p>
+    body {
+      font-family: 'Lexend Deca', sans-serif;
+      background: #fcfbf9 url('media/image.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #111827;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── Sections container ─────────────────── */
+    .content-wrap {
+      max-width: 880px;
+      width: 100%;
+      padding: 0 24px;
+    }
+
+    /* ── Hero ───────────────────────────────── */
+    .hero {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 24px;
+    }
+
+    .hero-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .badge {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      color: #111827;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.6;
+      color: #4b5563;
+      max-width: 580px;
+      margin-bottom: 36px;
+    }
+
+    .cta-group {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background-color: #ffffff;
+      color: #111827;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .btn-secondary {
+      color: #111827;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover { opacity: 0.8; }
+
+    .scroll-indicator {
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      color: rgba(255, 255, 255, 0.9);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+      margin-bottom: 48px;
+      text-transform: uppercase;
+    }
+
+    /* ── About & shared section styles ──────── */
+    section { width: 100%; display: flex; flex-direction: column; align-items: center; }
+
+    .section-label {
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 3.2vw, 36px);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+      color: #111827;
+      letter-spacing: -0.5px;
+    }
+
+    .section-body {
+      text-align: center;
+      color: #4b5563;
+      font-weight: 400;
+      line-height: 1.8;
+      max-width: 580px;
+      margin: 0 auto;
+      font-size: 16px;
+    }
+
+    #about, #research { padding: 80px 0; width: 100%; }
+
+    #research { background-color: #ffffff; }
+
+    /* ── Research grid ───────────────────────── */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+      width: 100%;
+    }
+
+    @media (max-width: 640px) {
+      .research-grid { grid-template-columns: 1fr; }
+    }
+
+    .research-card {
+      padding: 28px 24px;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      background: #fcfbf9;
+      transition: all 0.3s ease;
+    }
+
+    .research-card:hover {
+      border-color: #d1d5db;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      font-size: 18px;
+    }
+
+    .research-card h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #111827;
+    }
+
+    .research-card p {
+      color: #6b7280;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* ── Footer ──────────────────────────────── */
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 32px 24px;
+      color: #9ca3af;
+      font-size: 14px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    footer a {
+      color: #6b7280;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: #111827; }
+
+    /* ── Responsive ──────────────────────────── */
+    @media (max-width: 640px) {
+      .hero { padding: 60px 0 40px; }
+      #about, #research { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="badge">Open Lab for Next-Gen Computing</div>
+      <h1>Design with ease.</h1>
+      <p class="subtitle">Exploring the frontiers of Artificial Intelligence, Machine Learning, AI Safety, Neuroscience, and Quantum Computing.</p>
+
+      <div class="cta-group">
+        <a href="#about" class="btn-primary">Get Started &rarr;</a>
+        <a href="#research" class="btn-secondary">Explore Research</a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">Scroll &darr;</div>
+  </section>
+
+  <!-- ═══════ ABOUT ═══════ -->
+  <section id="about">
+    <div class="content-wrap">
+      <p class="section-label">About</p>
+      <h2 class="section-title">About Supernah</h2>
+      <p class="section-body">
+        Supernah is my fresh personal project where I'm starting from zero — no team, no big backing, just me tackling niche problems that feel deeply personal and limited in scope.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════ RESEARCH ═══════ -->
+  <section id="research">
+    <div class="content-wrap">
+      <p class="section-label">Focus</p>
+      <h2 class="section-title">Research Areas</h2>
+      <p class="section-body">Four intersecting domains that shape the core of my work.</p>
+
+      <div class="research-grid">
+        <div class="research-card">
+          <div class="card-icon">🧠</div>
+          <h4>Artificial Intelligence &amp; ML</h4>
           <p>Developing next-generation AI systems with improved reasoning, generalization, and efficiency.</p>
         </div>
-        <div>
-          <p><strong>Quantum Computing</strong></p>
+        <div class="research-card">
+          <div class="card-icon">⚛️</div>
+          <h4>Quantum Computing</h4>
           <p>Leveraging quantum mechanics for computational tasks impossible for classical computers.</p>
         </div>
-        <div>
-          <p><strong>AI Safety</strong></p>
+        <div class="research-card">
+          <div class="card-icon">🛡️</div>
+          <h4>AI Safety</h4>
           <p>Ensuring AI systems remain aligned with human values and beneficial as they become more capable.</p>
         </div>
-        <div>
-          <p><strong>Neuroscience</strong></p>
+        <div class="research-card">
+          <div class="card-icon">🔬</div>
+          <h4>Neuroscience</h4>
           <p>Understanding the brain to inspire new computing paradigms and advance brain-computer interfaces.</p>
         </div>
       </div>
-    </section>
-	<br>
+    </div>
+  </section>
 
-  </main>
-
+  <!-- ═══════ FOOTER ═══════ -->
   <footer>
-    <p style="text-align: center;">&copy; 2026 Supernah Open Lab. All rights reserved.</p>
+    <p>&copy; 2026 Supernah Open Lab &middot; All rights reserved &middot; <a href="https://github.com/suparnah" target="_blank">GitHub</a></p>
   </footer>
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
